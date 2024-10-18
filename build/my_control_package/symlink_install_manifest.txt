@@ -1,0 +1,15 @@
+/home/vincent/ros2_ws/src/install/my_control_package/share/ament_index/resource_index/package_run_dependencies/my_control_package
+/home/vincent/ros2_ws/src/install/my_control_package/share/ament_index/resource_index/parent_prefix_path/my_control_package
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/environment/ament_prefix_path.sh
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/environment/ament_prefix_path.dsv
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/environment/path.sh
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/environment/path.dsv
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/local_setup.bash
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/local_setup.sh
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/local_setup.zsh
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/local_setup.dsv
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/package.dsv
+/home/vincent/ros2_ws/src/install/my_control_package/share/ament_index/resource_index/packages/my_control_package
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/cmake/my_control_packageConfig.cmake
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/cmake/my_control_packageConfig-version.cmake
+/home/vincent/ros2_ws/src/install/my_control_package/share/my_control_package/package.xml
