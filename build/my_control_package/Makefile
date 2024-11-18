@@ -197,6 +197,45 @@ my_control_package_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_control_package_uninstall.dir/build.make CMakeFiles/my_control_package_uninstall.dir/build
 .PHONY : my_control_package_uninstall/fast
 
+#=============================================================================
+# Target rules for targets named ament_cmake_python_symlink_my_control_package
+
+# Build rule for target.
+ament_cmake_python_symlink_my_control_package: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_symlink_my_control_package
+.PHONY : ament_cmake_python_symlink_my_control_package
+
+# fast build rule for target.
+ament_cmake_python_symlink_my_control_package/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_my_control_package.dir/build.make CMakeFiles/ament_cmake_python_symlink_my_control_package.dir/build
+.PHONY : ament_cmake_python_symlink_my_control_package/fast
+
+#=============================================================================
+# Target rules for targets named ament_cmake_python_symlink_my_control_package_setup
+
+# Build rule for target.
+ament_cmake_python_symlink_my_control_package_setup: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_symlink_my_control_package_setup
+.PHONY : ament_cmake_python_symlink_my_control_package_setup
+
+# fast build rule for target.
+ament_cmake_python_symlink_my_control_package_setup/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_my_control_package_setup.dir/build.make CMakeFiles/ament_cmake_python_symlink_my_control_package_setup.dir/build
+.PHONY : ament_cmake_python_symlink_my_control_package_setup/fast
+
+#=============================================================================
+# Target rules for targets named ament_cmake_python_build_my_control_package_egg
+
+# Build rule for target.
+ament_cmake_python_build_my_control_package_egg: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_build_my_control_package_egg
+.PHONY : ament_cmake_python_build_my_control_package_egg
+
+# fast build rule for target.
+ament_cmake_python_build_my_control_package_egg/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_build_my_control_package_egg.dir/build.make CMakeFiles/ament_cmake_python_build_my_control_package_egg.dir/build
+.PHONY : ament_cmake_python_build_my_control_package_egg/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -210,6 +249,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... ament_cmake_python_build_my_control_package_egg"
+	@echo "... ament_cmake_python_symlink_my_control_package"
+	@echo "... ament_cmake_python_symlink_my_control_package_setup"
 	@echo "... my_control_package_uninstall"
 	@echo "... uninstall"
 .PHONY : help

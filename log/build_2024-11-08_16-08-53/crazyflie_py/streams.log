@@ -1,0 +1,18 @@
+[0.745s] Invoking command in '/home/vincent/ros2_ws/src/build/crazyflie_py': AMENT_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/vincent/ros2_ws/src/build/crazyflie_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vincent/ros2_ws/src/install/crazyflie_py/lib/python3.10/site-packages:/home/vincent/ros2_ws/src/install/crazyflie_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vincent/ros2_ws/src/build/crazyflie_py/build --no-deps symlink_data
+[1.036s] running develop
+[1.037s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[1.037s]   warnings.warn(
+[1.252s] running egg_info
+[1.252s] writing crazyflie_py.egg-info/PKG-INFO
+[1.252s] writing dependency_links to crazyflie_py.egg-info/dependency_links.txt
+[1.253s] writing entry points to crazyflie_py.egg-info/entry_points.txt
+[1.253s] writing requirements to crazyflie_py.egg-info/requires.txt
+[1.253s] writing top-level names to crazyflie_py.egg-info/top_level.txt
+[1.255s] reading manifest file 'crazyflie_py.egg-info/SOURCES.txt'
+[1.256s] writing manifest file 'crazyflie_py.egg-info/SOURCES.txt'
+[1.257s] running build_ext
+[1.257s] Creating /home/vincent/ros2_ws/src/install/crazyflie_py/lib/python3.10/site-packages/crazyflie-py.egg-link (link to .)
+[1.258s] 
+[1.258s] Installed /home/vincent/ros2_ws/src/build/crazyflie_py
+[1.259s] running symlink_data
+[1.304s] Invoked command in '/home/vincent/ros2_ws/src/build/crazyflie_py' returned '0': AMENT_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/vincent/ros2_ws/src/build/crazyflie_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vincent/ros2_ws/src/install/crazyflie_py/lib/python3.10/site-packages:/home/vincent/ros2_ws/src/install/crazyflie_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vincent/ros2_ws/src/build/crazyflie_py/build --no-deps symlink_data

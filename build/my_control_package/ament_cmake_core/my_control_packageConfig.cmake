@@ -16,7 +16,7 @@ set(_my_control_package_CONFIG_INCLUDED TRUE)
 
 # output package information
 if(NOT my_control_package_FIND_QUIETLY)
-  message(STATUS "Found my_control_package: 0.0.0 (${my_control_package_DIR})")
+  message(STATUS "Found my_control_package: 0.1.0 (${my_control_package_DIR})")
 endif()
 
 # warn when using a deprecated package

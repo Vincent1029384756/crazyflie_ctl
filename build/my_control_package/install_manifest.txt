@@ -1,0 +1,3 @@
+/home/vincent/ros2_ws/src/install/my_control_package/lib/my_control_package/emergency_node
+/home/vincent/ros2_ws/src/install/my_control_package/lib/my_control_package/hello_world
+/home/vincent/ros2_ws/src/install/my_control_package/lib/my_control_package/battery_reader

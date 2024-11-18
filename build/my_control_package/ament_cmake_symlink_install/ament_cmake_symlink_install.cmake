@@ -310,6 +310,21 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
+# install(FILES "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/my_control_package/environment")
+ament_cmake_symlink_install_files("/home/vincent/ros2_ws/src/my_control_package" FILES "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/my_control_package/environment")
+
+# install(FILES "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/my_control_package/environment")
+ament_cmake_symlink_install_files("/home/vincent/ros2_ws/src/my_control_package" FILES "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/my_control_package/environment")
+
+# install(DIRECTORY "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_python/my_control_package/my_control_package.egg-info/" "DESTINATION" "local/lib/python3.10/dist-packages/my_control_package-0.1.0-py3.10.egg-info")
+ament_cmake_symlink_install_directory("/home/vincent/ros2_ws/src/my_control_package" DIRECTORY "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_python/my_control_package/my_control_package.egg-info/" "DESTINATION" "local/lib/python3.10/dist-packages/my_control_package-0.1.0-py3.10.egg-info")
+
+# install(DIRECTORY "/home/vincent/ros2_ws/src/my_control_package/my_control_package/" "DESTINATION" "local/lib/python3.10/dist-packages/my_control_package" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
+ament_cmake_symlink_install_directory("/home/vincent/ros2_ws/src/my_control_package" DIRECTORY "/home/vincent/ros2_ws/src/my_control_package/my_control_package/" "DESTINATION" "local/lib/python3.10/dist-packages/my_control_package" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
+
+# install(DIRECTORY "launch" "DESTINATION" "share/my_control_package/")
+ament_cmake_symlink_install_directory("/home/vincent/ros2_ws/src/my_control_package" DIRECTORY "launch" "DESTINATION" "share/my_control_package/")
+
 # install(FILES "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/my_control_package" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/vincent/ros2_ws/src/my_control_package" FILES "/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/my_control_package" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 

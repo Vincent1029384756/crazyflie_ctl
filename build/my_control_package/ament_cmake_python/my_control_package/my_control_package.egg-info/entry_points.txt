@@ -1,0 +1,3 @@
+[console_scripts]
+hello_world = my_control_package.hello_world:main
+
