@@ -23,7 +23,7 @@ class BatteryMonitor(Node):
         self.low_battery_count = {}
 
         # Replace this with actual detected drones
-        self.detected_drones = ['/cf5']
+        self.detected_drones = ['/cf5', '/cf231']
 
         # Initialize landing status for each drone
         for drone_id in self.detected_drones:
