@@ -1,0 +1,1 @@
+/home/vincent/ros2_ws/src/ros2-vicon-receiver/vicon_receiver/msg/Position.msg

@@ -43,6 +43,12 @@ install(PROGRAMS
   RENAME battery_reader
 )
 
+install(PROGRAMS
+  my_control_package/L_shape.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME L_shape
+)
+
 # Install the launch files
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
 

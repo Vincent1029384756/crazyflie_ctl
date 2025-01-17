@@ -1,7 +1,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, OpaqueFunction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_ros.actions import Node
@@ -25,16 +25,22 @@ def generate_launch_description():
             }.items()
     )
     
-    # Node configuration for the dynamically launched script
-    my_node = Node(
-        package='my_control_package',
-        executable=script,  # Pass the dynamic script name
-        name=script,
-        output='screen',
-        parameters=[{
-            'use_sim_time': PythonExpression(["'", backend, "' == 'sim'"])
-        }]
-    )
+    # Conditionally include `my_node` based on the script argument
+    def launch_my_node(context, *args, **kwargs):
+        script_value = context.perform_substitution(script)
+        if script_value:  # Only add `my_node` if `script` is non-empty
+            return [
+                Node(
+                    package='my_control_package',
+                    executable=script_value,
+                    name=script_value,
+                    output='screen',
+                    parameters=[{
+                        'use_sim_time': PythonExpression(["'", backend, "' == 'sim'"])
+                    }]
+                )
+            ]
+        return []
 
     # Add the EmergencyNode
     emergency_node = Node(
@@ -56,7 +62,7 @@ def generate_launch_description():
         script_launch_arg,
         backend_launch_arg,
         crazyflie_launch,
-        my_node,
         emergency_node,
-        battery_node
+        battery_node,
+        OpaqueFunction(function=launch_my_node)
     ])

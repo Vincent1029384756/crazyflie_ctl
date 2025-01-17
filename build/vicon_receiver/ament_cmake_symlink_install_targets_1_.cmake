@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/vincent/ros2_ws/src/build/vicon_receiver/rosidl_generator_py/vicon_receiver/vicon_receiver_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" "TARGETS" "vicon_receiver__rosidl_typesupport_introspection_c__pyext" "DESTINATION" "local/lib/python3.10/dist-packages/vicon_receiver")

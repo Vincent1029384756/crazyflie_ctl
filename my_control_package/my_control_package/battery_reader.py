@@ -103,20 +103,20 @@ class BatteryMonitor(Node):
 
     def status_callback(self, msg):
         try:
-            self.get_logger().info("Entered status_callback")
+            #self.get_logger().info("Entered status_callback")
 
             drone_id = f"/{msg.header.frame_id}" if not msg.header.frame_id.startswith('/') else msg.header.frame_id
             self.get_logger().info(f"Drone ID: {drone_id}")
 
-            self.get_logger().info(f"Raw battery voltage: {msg.battery_voltage}")
+            #self.get_logger().info(f"Raw battery voltage: {msg.battery_voltage}")
 
             if drone_id in self.detected_drones:
                 self.get_logger().info(f"{drone_id} is a detected drone.")
                 self.drones_status[drone_id] = msg
 
                 if msg.battery_voltage > 3.9:
-                    self.get_logger().info("Battery voltage > 3.9")
-                    self.get_logger().info(f"Battery voltage for {drone_id}: {msg.battery_voltage:.2f} V")
+                    #self.get_logger().info("Battery voltage > 3.9")
+                    #self.get_logger().info(f"Battery voltage for {drone_id}: {msg.battery_voltage:.2f} V")
                     self.low_battery_count[drone_id] = 0  # Reset on good voltage
 
                 elif msg.battery_voltage < 3.9 and not self.is_landing_in_progress.get(drone_id, False):

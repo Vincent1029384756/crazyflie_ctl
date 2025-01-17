@@ -1,0 +1,110 @@
+[0.391s] Invoking command in '/home/vincent/ros2_ws/src/build/crazyflie': AMENT_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/my_control_package:/home/vincent/ros2_ws/install/crazyflie_sim:/home/vincent/ros2_ws/install/crazyflie_examples:/home/vincent/ros2_ws/install/crazyflie:/home/vincent/ros2_ws/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/crazyflie_py:/opt/ros/humble LD_LIBRARY_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/vincent/ros2_ws/src/build/crazyflie -- -j8 -l8
+[0.545s] [  5%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/CMakeFiles/crazyflieLinkCpp.dir/src/Connection.cpp.o[0m
+[0.545s] [  5%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/CMakeFiles/crazyflieLinkCpp.dir/src/USBManager.cpp.o[0m
+[0.548s] [  7%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/CMakeFiles/crazyflieLinkCpp.dir/src/USBDevice.cpp.o[0m
+[0.557s] [ 10%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/CMakeFiles/crazyflieLinkCpp.dir/src/CrazyradioThread.cpp.o[0m
+[0.561s] [ 12%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/CMakeFiles/crazyflieLinkCpp.dir/src/Crazyradio.cpp.o[0m
+[0.561s] [ 15%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/CMakeFiles/crazyflieLinkCpp.dir/src/CrazyflieUSB.cpp.o[0m
+[0.566s] [ 17%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/CMakeFiles/crazyflieLinkCpp.dir/src/CrazyflieUSBThread.cpp.o[0m
+[0.665s] [ 20%] [32mBuilding CXX object CMakeFiles/teleop.dir/src/teleop.cpp.o[0m
+[4.397s] [ 22%] [32m[1mLinking CXX static library libcrazyflieLinkCpp.a[0m
+[4.673s] [ 25%] Built target crazyflieLinkCpp
+[4.861s] [ 30%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/CMakeFiles/crazyflie_cpp.dir/src/crtp.cpp.o[0m
+[4.861s] [ 30%] [32mBuilding CXX object deps/crazyflie_tools/crazyflie_cpp/CMakeFiles/crazyflie_cpp.dir/src/Crazyflie.cpp.o[0m
+[7.628s] [ 32%] [32m[1mLinking CXX static library libcrazyflie_cpp.a[0m
+[7.731s] [ 32%] Built target crazyflie_cpp
+[7.812s] [ 35%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/listMemories.dir/src/listMemories.cpp.o[0m
+[7.814s] [ 40%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/reboot.dir/src/reboot.cpp.o[0m
+[7.814s] [ 42%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/listParams.dir/src/listParams.cpp.o[0m
+[7.816s] [ 42%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/scan.dir/src/scan.cpp.o[0m
+[7.823s] [ 45%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/battery.dir/src/battery.cpp.o[0m
+[7.824s] [ 47%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/listLogVariables.dir/src/listLogVariables.cpp.o[0m
+[7.834s] [ 50%] [32mBuilding CXX object CMakeFiles/crazyflie_server.dir/src/crazyflie_server.cpp.o[0m
+[10.869s] [ 52%] [32m[1mLinking CXX executable scan[0m
+[11.047s] [ 55%] [32m[1mLinking CXX executable listMemories[0m
+[11.139s] [ 57%] [32m[1mLinking CXX executable listParams[0m
+[11.216s] [ 60%] [32m[1mLinking CXX executable listLogVariables[0m
+[11.351s] [ 60%] Built target scan
+[11.417s] [ 62%] [32m[1mLinking CXX executable battery[0m
+[11.425s] [ 65%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/version.dir/src/version.cpp.o[0m
+[11.483s] [ 65%] Built target listMemories
+[11.505s] [ 67%] [32m[1mLinking CXX executable reboot[0m
+[11.537s] [ 70%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/console.dir/src/console.cpp.o[0m
+[11.619s] [ 70%] Built target listLogVariables
+[11.635s] [ 70%] Built target listParams
+[11.682s] [ 72%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/comCheck.dir/src/comCheck.cpp.o[0m
+[11.711s] [ 75%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/log.dir/src/log.cpp.o[0m
+[11.853s] [ 75%] Built target battery
+[11.902s] [ 77%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/downloadUSDLogfile.dir/src/downloadUSDLogfile.cpp.o[0m
+[11.921s] [ 77%] Built target reboot
+[11.965s] [ 80%] [32mBuilding CXX object deps/crazyflie_tools/CMakeFiles/setParam.dir/src/setParam.cpp.o[0m
+[14.166s] [ 82%] [32m[1mLinking CXX executable version[0m
+[14.307s] [ 85%] [32m[1mLinking CXX executable console[0m
+[14.633s] [ 85%] Built target version
+[14.665s] [ 87%] [32m[1mLinking CXX executable comCheck[0m
+[14.734s] [ 90%] [32m[1mLinking CXX executable downloadUSDLogfile[0m
+[14.739s] [ 90%] Built target console
+[15.017s] [ 92%] [32m[1mLinking CXX executable log[0m
+[15.080s] [ 92%] Built target comCheck
+[15.090s] [ 92%] Built target downloadUSDLogfile
+[15.205s] [ 95%] [32m[1mLinking CXX executable setParam[0m
+[15.308s] [ 95%] Built target log
+[15.458s] [ 95%] Built target setParam
+[20.571s] [ 97%] [32m[1mLinking CXX executable teleop[0m
+[21.554s] [ 97%] Built target teleop
+[40.590s] [100%] [32m[1mLinking CXX executable crazyflie_server[0m
+[43.070s] [100%] Built target crazyflie_server
+[43.080s] Invoked command in '/home/vincent/ros2_ws/src/build/crazyflie' returned '0': AMENT_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/my_control_package:/home/vincent/ros2_ws/install/crazyflie_sim:/home/vincent/ros2_ws/install/crazyflie_examples:/home/vincent/ros2_ws/install/crazyflie:/home/vincent/ros2_ws/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/crazyflie_py:/opt/ros/humble LD_LIBRARY_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/vincent/ros2_ws/src/build/crazyflie -- -j8 -l8
+[43.115s] Invoking command in '/home/vincent/ros2_ws/src/build/crazyflie': AMENT_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/my_control_package:/home/vincent/ros2_ws/install/crazyflie_sim:/home/vincent/ros2_ws/install/crazyflie_examples:/home/vincent/ros2_ws/install/crazyflie:/home/vincent/ros2_ws/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/crazyflie_py:/opt/ros/humble LD_LIBRARY_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/vincent/ros2_ws/src/build/crazyflie
+[43.122s] -- Install configuration: ""
+[43.139s] -- Execute custom install script
+[43.144s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/comCheck
+[43.144s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/scan
+[43.144s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/listParams
+[43.144s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/listLogVariables
+[43.145s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/listMemories
+[43.145s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/reboot
+[43.145s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/battery
+[43.145s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/version
+[43.145s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/console
+[43.145s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/log
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/setParam
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/downloadUSDLogfile
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/teleop
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/crazyflie_server
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/crazyflie_server.py
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/chooser.py
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/vel_mux.py
+[43.146s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/cfmult.py
+[43.147s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/simple_mapper_multiranger.py
+[43.147s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/aideck_streamer.py
+[43.147s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/gui.py
+[43.147s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/lib/crazyflie/flash.py
+[43.147s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//launch/launch.py
+[43.147s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//launch/launch_teleop2.py
+[43.147s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//launch/teleop_launch.py
+[43.148s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//config/aideck_streamer.yaml
+[43.148s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//config/config.rviz
+[43.148s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//config/crazyflies.yaml
+[43.148s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//config/motion_capture.yaml
+[43.148s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//config/server.yaml
+[43.148s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//config/teleop.yaml
+[43.148s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//urdf/cf2_assembly.stl
+[43.149s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//urdf/cf2_assembly_with_props.dae
+[43.149s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie//urdf/crazyflie_description.urdf
+[43.149s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/ament_index/resource_index/package_run_dependencies/crazyflie
+[43.149s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/ament_index/resource_index/parent_prefix_path/crazyflie
+[43.149s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/environment/ament_prefix_path.sh
+[43.149s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/environment/ament_prefix_path.dsv
+[43.150s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/environment/path.sh
+[43.150s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/environment/path.dsv
+[43.150s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/local_setup.bash
+[43.151s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/local_setup.sh
+[43.151s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/local_setup.zsh
+[43.151s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/local_setup.dsv
+[43.151s] -- Symlinking: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/package.dsv
+[43.161s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/ament_index/resource_index/packages/crazyflie
+[43.161s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/cmake/crazyflieConfig.cmake
+[43.161s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/cmake/crazyflieConfig-version.cmake
+[43.161s] -- Up-to-date symlink: /home/vincent/ros2_ws/src/install/crazyflie/share/crazyflie/package.xml
+[43.164s] Invoked command in '/home/vincent/ros2_ws/src/build/crazyflie' returned '0': AMENT_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/my_control_package:/home/vincent/ros2_ws/install/crazyflie_sim:/home/vincent/ros2_ws/install/crazyflie_examples:/home/vincent/ros2_ws/install/crazyflie:/home/vincent/ros2_ws/install/crazyflie_interfaces:/home/vincent/ros2_ws/install/crazyflie_py:/opt/ros/humble LD_LIBRARY_PATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/vincent/ros2_ws/src/install/crazyflie_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/vincent/ros2_ws/src/build/crazyflie
