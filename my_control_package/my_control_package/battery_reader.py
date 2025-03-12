@@ -114,13 +114,13 @@ class BatteryMonitor(Node):
                 self.get_logger().info(f"{drone_id} is a detected drone.")
                 self.drones_status[drone_id] = msg
 
-                if msg.battery_voltage > 3.9:
+                if msg.battery_voltage > 3.5:
                     #self.get_logger().info("Battery voltage > 3.9")
                     #self.get_logger().info(f"Battery voltage for {drone_id}: {msg.battery_voltage:.2f} V")
                     self.low_battery_count[drone_id] = 0  # Reset on good voltage
 
-                elif msg.battery_voltage < 3.9 and not self.is_landing_in_progress.get(drone_id, False):
-                    self.get_logger().info("Battery voltage < 3.9")
+                elif msg.battery_voltage < 3.5 and not self.is_landing_in_progress.get(drone_id, False):
+                    self.get_logger().info("Battery voltage < 3.5")
                     self.low_battery_count[drone_id] += 1
                     self.get_logger().warn(
                         f"LOW BATTERY WARNING {drone_id}: {msg.battery_voltage:.2f} V, count: {self.low_battery_count[drone_id]}"

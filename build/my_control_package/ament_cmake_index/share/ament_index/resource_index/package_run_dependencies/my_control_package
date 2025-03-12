@@ -1,1 +1,0 @@
-rclcpp;std_msgs;rclpy;std_srvs;builtin_interfaces;crazyflie;crazyflie_interfaces;ament_lint_auto;ament_lint_common;ament_pep257;python3-pytest;ament_cmake_pytest

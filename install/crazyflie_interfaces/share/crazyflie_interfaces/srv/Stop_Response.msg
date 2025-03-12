@@ -1,1 +1,0 @@
-/home/vincent/ros2_ws/src/build/crazyflie_interfaces/rosidl_cmake/srv/Stop_Response.msg

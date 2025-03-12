@@ -1,1 +1,0 @@
-/home/vincent/ros2_ws/src/build/my_control_package/ament_cmake_core/my_control_packageConfig-version.cmake

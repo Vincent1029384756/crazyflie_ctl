@@ -1,1 +1,0 @@
-/home/vincent/ros2_ws/src/my_control_package/my_control_package/emergency_node.py

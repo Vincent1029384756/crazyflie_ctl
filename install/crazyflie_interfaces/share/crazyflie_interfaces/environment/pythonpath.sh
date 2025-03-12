@@ -1,1 +1,0 @@
-/home/vincent/ros2_ws/src/build/crazyflie_interfaces/ament_cmake_environment_hooks/pythonpath.sh

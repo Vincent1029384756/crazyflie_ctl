@@ -1,1 +1,0 @@
-/home/vincent/ros2_ws/src/build/vicon_receiver/rosidl_generator_c/vicon_receiver/msg/detail/position__struct.h

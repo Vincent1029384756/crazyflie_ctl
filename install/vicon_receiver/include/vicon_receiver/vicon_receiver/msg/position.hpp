@@ -1,1 +1,0 @@
-/home/vincent/ros2_ws/src/build/vicon_receiver/rosidl_generator_cpp/vicon_receiver/msg/position.hpp

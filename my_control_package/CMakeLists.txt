@@ -49,8 +49,33 @@ install(PROGRAMS
   RENAME L_shape
 )
 
+install(PROGRAMS
+  my_control_package/circle.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME circle
+)
+
+install(PROGRAMS
+  my_control_package/path_follower.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME path_follower
+)
+
+install(PROGRAMS
+  my_control_package/dip_detect.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME dip_detect
+)
+
 # Install the launch files
-install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/)
+
+# Install the data directory
+install(DIRECTORY my_control_package/data
+  DESTINATION lib/${PROJECT_NAME}/
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

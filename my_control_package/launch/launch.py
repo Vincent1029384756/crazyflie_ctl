@@ -57,6 +57,13 @@ def generate_launch_description():
         output='screen'
     )
 
+    dip_detect = Node(
+        package="my_control_package",
+            executable="dip_detect",
+            name="altitude_dip_detector",
+            output="screen"
+    )
+
     # Return the launch description with all components
     return LaunchDescription([
         script_launch_arg,
@@ -64,5 +71,6 @@ def generate_launch_description():
         crazyflie_launch,
         emergency_node,
         battery_node,
+        dip_detect,
         OpaqueFunction(function=launch_my_node)
     ])

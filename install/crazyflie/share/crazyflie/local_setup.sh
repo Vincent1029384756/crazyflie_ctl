@@ -1,1 +1,0 @@
-/home/vincent/ros2_ws/src/build/crazyflie/ament_cmake_environment_hooks/local_setup.sh
