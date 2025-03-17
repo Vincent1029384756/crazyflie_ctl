@@ -67,6 +67,24 @@ install(PROGRAMS
   RENAME dip_detect
 )
 
+install(PROGRAMS
+  my_control_package/fake_target.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME fake_target
+)
+
+install(PROGRAMS
+  my_control_package/fake_detector.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME fake_detector
+)
+
+install(PROGRAMS
+  my_control_package/live_plot.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME live_plot
+)
+
 # Install the launch files
 install(DIRECTORY
   launch

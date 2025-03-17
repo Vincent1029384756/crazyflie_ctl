@@ -57,12 +57,35 @@ def generate_launch_description():
         output='screen'
     )
 
-    dip_detect = Node(
-        package="my_control_package",
-            executable="dip_detect",
-            name="altitude_dip_detector",
-            output="screen"
+    # dip_detect = Node(
+    #     package="my_control_package",
+    #         executable="dip_detect",
+    #         name="altitude_dip_detector",
+    #         output="screen"
+    # )
+
+    fakeTarget_node = Node(
+        package='my_control_package',
+        executable='fake_target',
+        name='fake_target',
+        output='screen'
     )
+
+    fakeDetector_node = Node(
+        package='my_control_package',
+        executable='fake_detector',
+        name='fake_detector',
+        output='screen'
+    )
+
+    livePlot_node = Node(
+        package='my_control_package',
+        executable='live_plot',
+        name='live_plot',
+        output='screen'
+    )
+
+
 
     # Return the launch description with all components
     return LaunchDescription([
@@ -71,6 +94,9 @@ def generate_launch_description():
         crazyflie_launch,
         emergency_node,
         battery_node,
-        dip_detect,
+        fakeTarget_node,
+        fakeDetector_node,
+        livePlot_node,
+        #dip_detect,
         OpaqueFunction(function=launch_my_node)
     ])
