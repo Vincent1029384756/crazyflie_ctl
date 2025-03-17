@@ -52,7 +52,7 @@ class FakeDetector(Node):
             return
 
         # set detection range
-        detect_range = 0.5
+        detect_range = 0.1
 
         # retrieve cf231 and target pose data
         cf231_x = self.msg1.pose.position.x
@@ -63,6 +63,8 @@ class FakeDetector(Node):
 
         # calculate distance between cf231 and fake target
         dist = math.sqrt((cf231_x - target_x)**2 + (cf231_y - target_y)**2)
+
+        self.get_logger().info(f"Distance to target: {dist:.2f}m")
 
         # publish go_home and time_to_home when target is within detection range
         if dist < detect_range:

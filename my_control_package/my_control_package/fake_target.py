@@ -18,12 +18,16 @@ class FakeTarget(Node):
         # set update rate
         self.timer = self.create_timer(1.0, self.pose_update)
 
+        # set max and min speed
+        self.maxV = 0.01
+        self.minV = 0.005
+
         # initialize the starting position
         self.cur_pose = PoseStamped()
         self.cur_pose.header.stamp = self.get_clock().now().to_msg()
         self.cur_pose.header.frame_id = "world"
-        self.cur_pose.pose.position.x = 0.0
-        self.cur_pose.pose.position.y = 0.0
+        self.cur_pose.pose.position.x = 0.2
+        self.cur_pose.pose.position.y = 0.2
         self.cur_pose.pose.position.z = 0.0
 
         self.get_logger().info("Fake Target Publisher started!")
@@ -31,18 +35,29 @@ class FakeTarget(Node):
 
     def pose_update(self):
 
-        # Max step size per second
-        step_size = math.sqrt(0.1)
+        counter = 0
+
+        if counter == 0 or counter >= 5:
+            # Picking magnitude of speed every 5 sec
+            step_size_x = random.uniform(self.minV, self.maxV)
+            step_size_y = random.uniform(self.minV, self.maxV)
+
+            # picking direction
+            step_dir_x = random.choice([-1.0, 1.0])
+            step_dir_y = random.choice([-1.0, 1.0])
+            counter = 1
 
         # random movement in x and y
-        self.cur_pose.pose.position.x += random.uniform(-step_size, step_size)
-        self.cur_pose.pose.position.y += random.uniform(-step_size, step_size)
+        self.cur_pose.pose.position.x += step_dir_x * step_size_x
+        self.cur_pose.pose.position.y += step_dir_y * step_size_y
 
         # Update timestamp
         self.cur_pose.header.stamp = self.get_clock().now().to_msg()
 
         # publish new pose
         self.pose_publisher.publish(self.cur_pose)
+
+        counter += 1
         
 def main(args=None):
     rclpy.init(args=args)

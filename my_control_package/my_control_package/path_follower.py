@@ -60,13 +60,13 @@ def main():
 
     # Load trajectory
     traj1 = Trajectory()
-    traj1.loadcsv(Path(__file__).parent / 'data/traj10.csv')
+    traj1.loadcsv(Path(__file__).parent / 'data/traj12.csv')
 
     # Enable logging
     #allcfs.setParam('usd.logging', 1)
 
     TRIALS = 1
-    TIMESCALE = 3.0
+    TIMESCALE = 1.0
 
     for i in range(TRIALS):
         for cf in allcfs.crazyflies:
@@ -75,10 +75,10 @@ def main():
         allcfs.takeoff(targetHeight=0.5, duration=2.0)
         timeHelper.sleep(3.0)
         
-        for cf in allcfs.crazyflies:
-            pos = np.array(cf.initialPosition) + np.array([-0.5, -0.7, 0.5])
-            cf.goTo(pos, 0, 7.0)
-        timeHelper.sleep(7.0)
+        # for cf in allcfs.crazyflies:
+        #     pos = np.array(cf.initialPosition) + np.array([-0.5, -0.7, 0.5])
+        #     cf.goTo(pos, 0, 7.0)
+        # timeHelper.sleep(7.0)
 
         allcfs.startTrajectory(0, timescale=TIMESCALE)
         
@@ -97,7 +97,11 @@ def main():
 
         # If Go Home was not triggered, complete the normal flight sequence
         if not node.go_home_flag:
-            allcfs.land(targetHeight=0.02, duration=2.0)
+            for cf in allcfs.crazyflies:
+                pos = np.array(cf.initialPosition) + np.array([0.0, 0.0, 0.5])
+                cf.goTo(pos, 0, 7.0)
+            timeHelper.sleep(7.0)
+            allcfs.land(targetHeight=0.02, duration=3)
             timeHelper.sleep(3.0)
 
     # Disable logging
