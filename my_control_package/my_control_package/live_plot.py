@@ -5,6 +5,7 @@ from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 import matplotlib.pyplot as plt
 import threading
+import matplotlib.patches as patches  # Import patches for drawing circles
 
 class RealTimePlot(Node):
     def __init__(self):
@@ -26,10 +27,14 @@ class RealTimePlot(Node):
         self.fig, self.ax = plt.subplots()
         self.cf231_dot, = self.ax.plot([], [], "bo", markersize=8, label="cf231 Drone")
         self.target_dot, = self.ax.plot([], [], "ro", markersize=8, label="Fake Target")
-        
+
+        # Add a circle with radius 0.1m around the drone
+        self.drone_circle = patches.Circle((0, 0), 0.2, edgecolor="b", facecolor="none", linestyle="--")
+        self.ax.add_patch(self.drone_circle)
+
         # Set initial axis limits
-        self.ax.set_xlim(-5, 5)
-        self.ax.set_ylim(-5, 5)
+        self.ax.set_xlim(-1.5, 1.5)
+        self.ax.set_ylim(-1.5, 1.5)
         self.ax.set_xlabel("X Position")
         self.ax.set_ylabel("Y Position")
         self.ax.set_title("Real-Time Position of cf231 and Target")
@@ -55,6 +60,9 @@ class RealTimePlot(Node):
         # Update plot data
         self.cf231_dot.set_data(self.cf231_pos[0], self.cf231_pos[1])
         self.target_dot.set_data(self.target_pos[0], self.target_pos[1])
+
+        # Update circle position
+        self.drone_circle.set_center((self.cf231_pos[0], self.cf231_pos[1]))
         
         # Redraw plot
         self.fig.canvas.draw_idle()

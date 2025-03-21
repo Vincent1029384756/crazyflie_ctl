@@ -8,109 +8,117 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Bool, Float32
 import threading
+from threading import Event
+
 
 class GoHomeListener(Node):
     def __init__(self):
         super().__init__("path_follower")
 
-        # Subscribe to /cf231/go_home (Bool) and /cf231/time_to_home (Float32)
-        self.go_home_sub = self.create_subscription(Bool, "/cf231/go_home", self.go_home_callback, 10)
-        self.time_to_home_sub = self.create_subscription(Float32, "/cf231/time_to_home", self.time_to_home_callback, 10)
+        self.go_home_event = Event()
+        self.time_to_home_231 = 7.0
+        self.time_to_home_5 = 10.0
 
-        # set default values if no data published
-        self.go_home_flag = False
-        self.time_to_home = 10.0
+        self.go_home_sub = self.create_subscription(Bool, "/cf231/go_home", self.go_home_callback, 10)
+        self.time_to_home_sub_231 = self.create_subscription(Float32, "/cf231/time_to_home", self.time_to_home_callback_231, 10)
+        self.time_to_home_sub_5 = self.create_subscription(Float32, "/cf5/time_to_home", self.time_to_home_callback_5, 10)
 
     def go_home_callback(self, msg: Bool):
-        # Callback function for /cf231/go_home
+        self.get_logger().info(f"[DEBUG] go_home_callback received: {msg.data}")
         if msg.data:
-            self.get_logger().info("Go home command received")
-            self.go_home_flag = True
+            self.go_home_event.set()
 
-    def time_to_home_callback(self, msg: Float32):
-        # Callback for /cf231/time_to_home
-        self.time_to_home = msg.data
+    def time_to_home_callback_231(self, msg: Float32):
+        self.time_to_home_231 = msg.data
 
-def ros_spin_thread(node):
-    # A function to run subscribers in a seperate thread
-    # We want the subscribers and the flight code to run at the same time
-    rclpy.spin(node)
+    def time_to_home_callback_5(self, msg: Float32):
+        self.time_to_home_5 = msg.data
+
 
 def main():
-    # Initialize Crazyswarm
     swarm = Crazyswarm()
     timeHelper = swarm.timeHelper
     allcfs = swarm.allcfs
+    cf231 = allcfs.crazyflies[0]
+    cf5 = allcfs.crazyflies[1]
 
+    traj1 = Trajectory()
+    traj1.loadcsv(Path(__file__).parent / 'data/drone1_traj_cim.csv')
+    traj2 = Trajectory()
+    traj2.loadcsv(Path(__file__).parent / 'data/drone2_traj_cim.csv')
 
-    # Initialize ROS2
     if not rclpy.ok():
         rclpy.init()
 
-    # Create ROS node
     node = GoHomeListener()
-
-    # Use a ROS 2 executor (avoids `spin_once` conflict)
     executor = rclpy.executors.SingleThreadedExecutor()
     executor.add_node(node)
-
-    # Run subscribers in a background thread
     ros_thread = threading.Thread(target=executor.spin, daemon=True)
     ros_thread.start()
 
-    # Load trajectory
-    traj1 = Trajectory()
-    traj1.loadcsv(Path(__file__).parent / 'data/traj12.csv')
+    TIMESCALE = 0.3
 
-    # Enable logging
-    #allcfs.setParam('usd.logging', 1)
+    cf231.uploadTrajectory(0, 0, traj1)
+    cf5.uploadTrajectory(0, 0, traj2)
 
-    TRIALS = 1
-    TIMESCALE = 1.0
+    cf231.takeoff(targetHeight=0.5, duration=2.0)
+    timeHelper.sleep(3.0)
+    cf231.goTo(np.array([-0.0245, 0.010724, 0.5]), 0, 1.0)
+    timeHelper.sleep(2.0)
 
-    for i in range(TRIALS):
-        for cf in allcfs.crazyflies:
-            cf.uploadTrajectory(0, 0, traj1)
+    cf5.takeoff(targetHeight=0.5, duration=2.0)
+    timeHelper.sleep(3.0)
+    cf5.goTo(np.array([0.03341, -0.14623, 0.5]), 0, 1.0)
+    timeHelper.sleep(2.0)
 
-        allcfs.takeoff(targetHeight=0.5, duration=2.0)
-        timeHelper.sleep(3.0)
-        
-        # for cf in allcfs.crazyflies:
-        #     pos = np.array(cf.initialPosition) + np.array([-0.5, -0.7, 0.5])
-        #     cf.goTo(pos, 0, 7.0)
-        # timeHelper.sleep(7.0)
+    allcfs.startTrajectory(0, timescale=TIMESCALE)
+    trajectory_duration = traj1.duration * TIMESCALE + 2.0
+    trajectory_end_time = timeHelper.time() + trajectory_duration
 
-        allcfs.startTrajectory(0, timescale=TIMESCALE)
-        
-        # Keep checking for "Go Home" command while executing the trajectory
-        trajectory_end_time = timeHelper.time() + traj1.duration * TIMESCALE + 2.0
-        while timeHelper.time() < trajectory_end_time:
-            if node.go_home_flag:
-                for cf in allcfs.crazyflies:
-                    pos = np.array(cf.initialPosition) + np.array([0.0, 0.0, 0.5])
-                    cf.goTo(pos, 0, node.time_to_home)
-                timeHelper.sleep(node.time_to_home + 1.0)
-                allcfs.land(targetHeight=0.02, duration=2.0)
-                timeHelper.sleep(3.0)
-                break  # Exit the loop if go_home was triggered
-            timeHelper.sleep(0.1)  # Check every 0.1s
+    while timeHelper.time() < trajectory_end_time:
+        if node.go_home_event.is_set():
+            print("[ACTION] Issuing goTo to cf231...")
+            cf231.goTo(np.array(cf231.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_231)
+            timeHelper.sleep(node.time_to_home_231 + 1.0)
 
-        # If Go Home was not triggered, complete the normal flight sequence
-        if not node.go_home_flag:
-            for cf in allcfs.crazyflies:
-                pos = np.array(cf.initialPosition) + np.array([0.0, 0.0, 0.5])
-                cf.goTo(pos, 0, 7.0)
-            timeHelper.sleep(7.0)
-            allcfs.land(targetHeight=0.02, duration=3)
+            print("[ACTION] Issuing goTo to cf5...")
+            cf5.goTo(np.array(cf5.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_5)
+            timeHelper.sleep(node.time_to_home_5 + 1.0)
+
+            print("[ACTION] Landing all drones...")
+            allcfs.land(targetHeight=0.02, duration=3.0)
             timeHelper.sleep(3.0)
 
-    # Disable logging
-    #allcfs.setParam('usd.logging', 0)
+            node.go_home_event.clear()
+            return
 
-    # Shutdown ROS
+        timeHelper.sleep(0.1)
+    
+    if not node.go_home_event.is_set():
+        print("[ACTION] Issuing goTo to cf231...")
+        cf231.goTo(np.array(cf231.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_231)
+        timeHelper.sleep(node.time_to_home_231 + 1.0)
+
+        print("[ACTION] Issuing goTo to cf5...")
+        cf5.goTo(np.array(cf5.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_5)
+        timeHelper.sleep(node.time_to_home_5 + 1.0)
+
+        print("[ACTION] Landing all drones...")
+        allcfs.land(targetHeight=0.02, duration=3.0)
+        timeHelper.sleep(3.0)
+
+
+    # Normal landing sequence
+    print("[ACTION] Executing normal landing sequence.")
+    cf231.goTo(np.array(cf231.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, 7.0)
+    timeHelper.sleep(7.0)
+    cf5.goTo(np.array(cf5.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, 10.0)
+    timeHelper.sleep(10.0)
+    allcfs.land(targetHeight=0.02, duration=3.0)
+    timeHelper.sleep(3.0)
+
     rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
-
-
