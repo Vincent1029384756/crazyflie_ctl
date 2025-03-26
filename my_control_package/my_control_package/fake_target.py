@@ -4,6 +4,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 import random
+import math
 
 class FakeTarget(Node):
     def __init__(self):
@@ -18,8 +19,8 @@ class FakeTarget(Node):
         self.timer = self.create_timer(1.0, self.pose_update)
 
         # Set max and min speed
-        self.maxV = 0.006
-        self.minV = 0.005
+        self.maxV = math.sqrt(0.025)
+        self.minV = math.sqrt(0.01)
 
         # Initialize the starting position
         self.cur_pose = PoseStamped()
