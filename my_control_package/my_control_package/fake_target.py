@@ -25,7 +25,7 @@ class FakeTarget(Node):
         self.cur_pose = PoseStamped()
         self.cur_pose.header.stamp = self.get_clock().now().to_msg()
         self.cur_pose.header.frame_id = "world"
-        self.cur_pose.pose.position.x = -0.25
+        self.cur_pose.pose.position.x = 0.25
         self.cur_pose.pose.position.y = -0.25
         self.cur_pose.pose.position.z = 0.0
 

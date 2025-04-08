@@ -56,20 +56,19 @@ def main():
     ros_thread = threading.Thread(target=executor.spin, daemon=True)
     ros_thread.start()
 
-    TIMESCALE = 0.3
+    TIMESCALE = 1.0
 
     cf231.uploadTrajectory(0, 0, traj1)
     cf5.uploadTrajectory(0, 0, traj2)
 
-    cf231.takeoff(targetHeight=0.5, duration=2.0)
+    allcfs.takeoff(targetHeight=0.5, duration=2)
     timeHelper.sleep(3.0)
-    cf231.goTo(np.array([-0.0245, 0.010724, 0.5]), 0, 1.0)
-    timeHelper.sleep(2.0)
 
-    cf5.takeoff(targetHeight=0.5, duration=2.0)
-    timeHelper.sleep(3.0)
-    cf5.goTo(np.array([0.03341, -0.14623, 0.5]), 0, 1.0)
-    timeHelper.sleep(2.0)
+    # cf231.goTo(np.array([-0.21, -0.10, 0.5]), 0, 3.0)
+    # timeHelper.sleep(3.0)
+
+    # cf5.goTo(np.array([0.29, 0.14, 0.5]), 0, 3.0)
+    # timeHelper.sleep(3.0)
 
     allcfs.startTrajectory(0, timescale=TIMESCALE)
     trajectory_duration = traj1.duration * TIMESCALE + 2.0
@@ -77,16 +76,16 @@ def main():
 
     while timeHelper.time() < trajectory_end_time:
         if node.go_home_event.is_set():
-            print("[ACTION] Issuing goTo to cf231...")
-            cf231.goTo(np.array(cf231.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_231)
+            print("[ACTION] Issuing Go Home to cf231...")
+            cf231.goTo(np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_231)
             timeHelper.sleep(node.time_to_home_231 + 1.0)
+            cf231.land(targetHeight=0.02, duration=3.0)
+            timeHelper.sleep(3.0)
 
-            print("[ACTION] Issuing goTo to cf5...")
-            cf5.goTo(np.array(cf5.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_5)
+            print("[ACTION] Issuing Go Home to cf5...")
+            cf5.goTo(np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_5)
             timeHelper.sleep(node.time_to_home_5 + 1.0)
-
-            print("[ACTION] Landing all drones...")
-            allcfs.land(targetHeight=0.02, duration=3.0)
+            cf5.land(targetHeight=0.02, duration=3.0)
             timeHelper.sleep(3.0)
 
             node.go_home_event.clear()
@@ -96,26 +95,26 @@ def main():
     
     if not node.go_home_event.is_set():
         print("[ACTION] Issuing goTo to cf231...")
-        cf231.goTo(np.array(cf231.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_231)
+        cf231.goTo(np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_231)
         timeHelper.sleep(node.time_to_home_231 + 1.0)
+        cf231.land(targetHeight=0.02, duration=3.0)
+        timeHelper.sleep(3.0)
 
         print("[ACTION] Issuing goTo to cf5...")
-        cf5.goTo(np.array(cf5.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_5)
+        cf5.goTo(np.array([0.0, 0.0, 0.5]), 0, node.time_to_home_5)
         timeHelper.sleep(node.time_to_home_5 + 1.0)
-
-        print("[ACTION] Landing all drones...")
-        allcfs.land(targetHeight=0.02, duration=3.0)
+        cf5.land(targetHeight=0.02, duration=3.0)
         timeHelper.sleep(3.0)
 
 
-    # Normal landing sequence
-    print("[ACTION] Executing normal landing sequence.")
-    cf231.goTo(np.array(cf231.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, 7.0)
-    timeHelper.sleep(7.0)
-    cf5.goTo(np.array(cf5.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, 10.0)
-    timeHelper.sleep(10.0)
-    allcfs.land(targetHeight=0.02, duration=3.0)
-    timeHelper.sleep(3.0)
+    # # Normal landing sequence
+    # print("[ACTION] Executing normal landing sequence.")
+    # cf231.goTo(np.array(cf231.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, 7.0)
+    # timeHelper.sleep(7.0)
+    # cf5.goTo(np.array(cf5.initialPosition) + np.array([0.0, 0.0, 0.5]), 0, 10.0)
+    # timeHelper.sleep(10.0)
+    # allcfs.land(targetHeight=0.02, duration=3.0)
+    # timeHelper.sleep(3.0)
 
     rclpy.shutdown()
 

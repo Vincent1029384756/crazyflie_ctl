@@ -57,13 +57,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    # dip_detect = Node(
-    #     package="my_control_package",
-    #         executable="dip_detect",
-    #         name="altitude_dip_detector",
-    #         output="screen"
-    # )
-
     fakeTarget_node = Node(
         package='my_control_package',
         executable='fake_target',
@@ -97,6 +90,5 @@ def generate_launch_description():
         fakeTarget_node,
         fakeDetector_node,
         livePlot_node,
-        #dip_detect,
         OpaqueFunction(function=launch_my_node)
     ])

@@ -10,14 +10,14 @@ class FakeDetector(Node):
     def __init__(self):
         super().__init__("fake_detector")
 
-        # subscribe to cf231 pose topic
+        # subscribe to aligned cf231 pose topic
         self.cf231_sub = self.create_subscription(
-            PoseStamped, "/cf231/pose", self.cf231_callback, 1
+            PoseStamped, "/cf231/aligned_pose", self.cf231_callback, 1
         )
 
         # subscribe to cf5 pose topic
         self.cf5_sub = self.create_subscription(
-            PoseStamped, "/cf5/pose", self.cf5_callback, 1
+            PoseStamped, "/cf5/aligned_pose", self.cf5_callback, 1
         )
 
         self.target_sub = self.create_subscription(
